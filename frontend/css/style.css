@@ -18,6 +18,18 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.parent-container {
+  min-width: 0; /* Flex itemlarda muammo bo'lsa */
+}
+
+@supports (-webkit-touch-callout: none) {
+  .video-container {
+    height: auto;
+    padding-bottom: 56.25%;
+  }
 }
 
 /* Shaffof navbar */
@@ -279,14 +291,27 @@ svg.text-gray-400 {
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 nisbat */
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
+  max-width: 100%; /* Yangi qo'shilgan */
+  margin: 0 auto; /* Markazga joylash */
 }
+
 .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: none; /* Agar chegaralar muammo bo'lsa */
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    padding-bottom: 75%; /* Mobil uchun balandroq nisbat */
+    width: 100vw; /* Ekran kengligini to'ldirish */
+    margin-left: -15px; /* Agar padding muammo bo'lsa */
+    margin-right: -15px;
+  }
 }
