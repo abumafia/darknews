@@ -155,6 +155,16 @@ function adjustVideoHeight() {
 window.addEventListener('resize', adjustVideoHeight);
 window.addEventListener('load', adjustVideoHeight);
 
+function resizeVideos() {
+  document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+    const width = wrapper.offsetWidth;
+    wrapper.style.height = (width * 0.5625) + 'px';
+  });
+}
+
+window.addEventListener('resize', resizeVideos);
+window.addEventListener('load', resizeVideos);
+
 // Like function
 async function handleLike(articleId, button) {
   try {
