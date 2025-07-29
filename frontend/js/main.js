@@ -144,6 +144,17 @@ document.addEventListener('DOMContentLoaded', async function() {
   await displayArticles();
 });
 
+function adjustVideoHeight() {
+  const videos = document.querySelectorAll('.video-container');
+  videos.forEach(container => {
+    const width = container.offsetWidth;
+    container.style.height = (width * 0.5625) + 'px';
+  });
+}
+
+window.addEventListener('resize', adjustVideoHeight);
+window.addEventListener('load', adjustVideoHeight);
+
 // Like function
 async function handleLike(articleId, button) {
   try {
