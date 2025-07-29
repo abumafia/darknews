@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Load articles
   async function loadArticles() {
     try {
-      const response = await fetch('http://localhost:3000/api/articles');
+      const response = await fetch('https://darknews.onrender.com/api/articles');
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (error) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       `;
       searchResults.classList.remove('hidden');
 
-      const response = await fetch(`http://localhost:3000/api/articles/search?q=${encodeURIComponent(query)}`);
+      const response = await fetch(`https://darknews.onrender.com/api/articles/search?q=${encodeURIComponent(query)}`);
       if (!response.ok) throw new Error('Search failed');
       const results = await response.json();
 
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 async function handleLike(articleId, button) {
   try {
     const userId = 'user_' + Math.random().toString(36).substr(2, 9);
-    const response = await fetch(`http://localhost:3000/api/articles/${articleId}/like`, {
+    const response = await fetch(`https://darknews.onrender.com/api/articles/${articleId}/like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
