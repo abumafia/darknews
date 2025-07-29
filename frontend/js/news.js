@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   
   try {
     // Yangilik ma'lumotlarini olish
-    const response = await fetch(`http://localhost:3000/api/articles/${articleId}`);
+    const response = await fetch(`https://darknews.onrender.com/api/articles/${articleId}`);
     const article = await response.json();
     
     // Comment yozish formasi
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       const text = document.getElementById('comment').value;
       
       try {
-        const response = await fetch(`http://localhost:3000/api/articles/${articleId}/comment`, {
+        const response = await fetch(`https://darknews.onrender.com/api/articles/${articleId}/comment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ async function handleLike(articleId, button) {
     // Haqiqiy loyihada foydalanuvchi IDsi auth orqali olinadi
     const userId = 'user_' + Math.random().toString(36).substr(2, 9);
     
-    const response = await fetch(`http://localhost:3000/api/articles/${articleId}/like`, {
+    const response = await fetch(`https://darknews.onrender.com/api/articles/${articleId}/like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
