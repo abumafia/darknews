@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const content = document.getElementById('article-content').value;
     
     try {
-      const response = await fetch('http://localhost:3000/api/admin/articles', {
+      const response = await fetch('https://darknews.onrender.com/api/admin/articles', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load dashboard stats
   async function loadDashboardStats() {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/stats');
+      const response = await fetch('https://darknews.onrender.com/api/admin/stats');
       const data = await response.json();
       
       document.getElementById('visits-count').textContent = data.visits;
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load recent articles
   async function loadRecentArticles() {
     try {
-      const response = await fetch('http://localhost:3000/api/articles');
+      const response = await fetch('https://darknews.onrender.com/api/articles');
       const articles = await response.json();
       
       const recentArticlesContainer = document.getElementById('recent-articles');
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load all articles for management
   async function loadArticles() {
     try {
-      const response = await fetch('http://localhost:3000/api/articles');
+      const response = await fetch('https://darknews.onrender.com/api/articles');
       const articles = await response.json();
       
       const articlesTable = document.getElementById('articles-table');
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load all comments for management
   async function loadComments() {
     try {
-      const response = await fetch('http://localhost:3000/api/admin/comments');
+      const response = await fetch('https://darknews.onrender.com/api/admin/comments');
       const comments = await response.json();
       
       const commentsTable = document.getElementById('comments-table');
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!confirm('Haqiqatan ham bu yangilikni o\'chirmoqchimisiz?')) return;
     
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/articles/${articleId}`, {
+      const response = await fetch(`https://darknews.onrender.com/api/admin/articles/${articleId}`, {
         method: 'DELETE'
       });
       
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!confirm('Haqiqatan ham bu izohni o\'chirmoqchimisiz?')) return;
     
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/comments/${commentId}`, {
+      const response = await fetch(`https://darknews.onrender.com/api/admin/comments/${commentId}`, {
         method: 'DELETE'
       });
       
