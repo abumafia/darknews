@@ -51,6 +51,20 @@ body {
   border: none;
 }
 
+@media (max-width: 768px) {
+  .video-wrapper {
+    padding-bottom: 62.5%; /* Mobil uchun biroz balandroq */
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+  }
+}
+
+.container, .post-content {
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+
 /* Shaffof navbar */
 .navbar {
   background-color: rgba(15, 15, 15, 0.8);
