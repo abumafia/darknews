@@ -50,28 +50,27 @@ document.addEventListener('DOMContentLoaded', async function() {
         </div>
       </div>
     `;
-    
-    // Yangilikni ko'rsatish
+
     articleContainer.innerHTML = `
-      <div>
-        <div class="bg-black p-6">
-          <h2 class="text-2xl font-bold mb-4">${article.title}</h2>
-          <div class="flex items-center justify-between mb-6">
-            <span class="text-sm text-gray-500">${new Date().toLocaleDateString()}</span>
-            <button onclick="handleLike(${article.id}, this)" class="bg-black flex items-center space-x-1 ${article.likedBy.length > 0 ? 'text-red-500' : 'text-gray-500'} hover:text-red-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="bg-black round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              <span>${article.likes}</span>
-            </button>
-          </div>
-          <div class="prose max-w-none">
-            <p class="text-gray-400 leading-relaxed">${article.content}</p>
-          </div>
-        </div>
-        ${commentFormHTML}
+  <div>
+    <div class="bg-black p-6">
+      <h2 class="text-2xl font-bold mb-4">${article.title}</h2>
+      <div class="flex items-center justify-between mb-6">
+        <span class="text-sm text-gray-500">${new Date().toLocaleDateString()}</span>
+        <button onclick="handleLike(${article.id}, this)" class="bg-black flex items-center space-x-1 ${article.likedBy.length > 0 ? 'text-red-500' : 'text-gray-500'} hover:text-red-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="bg-black round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span>${article.likes}</span>
+        </button>
       </div>
-    `;
+      <div class="prose max-w-none">
+        <p class="text-gray-400 leading-relaxed whitespace-pre-line">${article.content}</p>
+      </div>
+    </div>
+    ${commentFormHTML}
+  </div>
+`;
     
     // Comment formani ishga tushirish
     document.getElementById('comment-form').addEventListener('submit', async function(e) {
