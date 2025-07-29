@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-darker: #080808;
+  --bg-light: #1a1a1a;
+  --accent: #3b82f6;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-dark: #2d2d2d;
+  --border-light: #3d3d3d;
+  --overlay: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    padding-top: 80px;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Shaffof navbar */
+.navbar {
+  background-color: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+/* Post kartasi */
+.post-card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-dark);
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+}
+
+/* Media konteyner */
+.media-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background-color: var(--bg-darker);
+}
+
+.media-container img, 
+.media-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hashtaglar */
+.hashtag {
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
+.hashtag:hover {
+  opacity: 0.8;
+}
+
+/* Vaqt ko'rsatgichi */
+.time-badge {
+  background-color: var(--bg-darker);
+  color: var(--text-secondary);
+}
+
+/* Inputlar */
+.input-dark {
+  background-color: var(--bg-darker);
+  border: 1px solid var(--border-dark);
+  color: var(--text-primary);
+}
+
+.input-dark:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Like tugmasi */
+.like-btn.liked {
+  color: #6012e7;
+}
+
+/* Animatsiyalar */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Media elementlari uchun */
+.media-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.media-container img {
+  transition: transform 0.3s ease;
+}
+
+.media-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Qidiruv inputi */
+#search-input::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+
+/* Modal animatsiyasi */
+#add-article-modal {
+  transition: opacity 0.3s ease;
+}
+
+/* Inputlar uchun */
+input[type="url"]:disabled, 
+textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Radio tugmalar */
+input[type="radio"] {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+input[type="radio"]:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+/* Navbar uchun */
+header {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+header.scrolled {
+  transform: translateY(-100%);
+}
+
+/* Mobile menu uchun */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+#mobile-menu:not(.hidden) {
+  max-height: 500px;
+  padding: 1rem;
+}
+
+/* Search container animatsiyasi */
+#search-container {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#search-container:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar scroll effekti */
+@media (min-width: 768px) {
+  header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+  }
+  
+  header.scrolled .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Video konteyneri uchun */
+.relative.pt-\[56\.25\%\] {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+/* Iframe uchun */
+.absolute.top-0.left-0.w-full.h-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Rasm konteyneri uchun */
+.h-48.overflow-hidden.bg-black {
+  height: 12rem; /* 48 * 0.25rem = 12rem */
+}
+
+/* Animatsiyalar */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-in forwards;
+}
+
+/* Baholash yulduzlari */
+svg.text-yellow-400 {
+  fill: currentColor;
+}
+
+svg.text-gray-400 {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* O'xshash yangiliklar */
+#similar-articles {
+  border-top: 1px solid #2d3748;
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+
+.glass-nav {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#search-results a {
+  transition: background-color 0.2s ease;
+}
+
+#search-results a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}

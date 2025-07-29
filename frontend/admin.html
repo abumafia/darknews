@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Yangiliklar Sayti</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-900 text-white">
+      <div class="p-4 border-b border-gray-700">
+        <h1 class="text-xl font-bold">Admin Panel</h1>
+        <p class="text-sm text-gray-400">Yangiliklar boshqaruvi</p>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-3">
+          <li>
+            <a href="#dashboard" class="bg-green-500 flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#articles" class="bg-green-500 flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+              <i class="fas fa-newspaper"></i>
+              <span>Yangiliklar</span>
+            </a>
+          </li>
+          <li>
+            <a href="#comments" class="bg-green-500 flex items-center space-x-2 p-2 rounded hover:bg-gray-700">
+              <i class="fas fa-comments"></i>
+              <span>Izohlar</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="p-8">
+        <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-gray-900 rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-500">Tashriflar</h3>
+            <p id="visits-count" class="text-3xl font-bold mt-2">0</p>
+          </div>
+          <div class="bg-gray-900 rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-500">Yangiliklar</h3>
+            <p id="articles-count" class="text-3xl font-bold mt-2">0</p>
+          </div>
+          <div class="bg-gray-900 rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-500">Izohlar</h3>
+            <p id="comments-count" class="text-3xl font-bold mt-2">0</p>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold mb-4">So'ngi yangiliklar</h3>
+          <div id="recent-articles" class="space-y-4">
+            <!-- Yangiliklar shu yerda yuklanadi -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Section -->
+      <section id="articles" class="p-8 hidden">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold">Yangiliklar boshqaruvi</h2>
+          <button id="add-article-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Yangi yangilik qo'shish
+          </button>
+        </div>
+
+        <!-- Add Article Modal -->
+        <div id="add-article-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+          <div class="bg-gray-900 rounded-lg p-6 w-full max-w-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold">Yangi yangilik</h3>
+              <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <form id="article-form" class="space-y-4">
+              <div>
+                <label for="article-title" class="block text-sm font-medium text-gray-700">Sarlavha</label>
+                <input type="text" id="article-title" required class="bg-black mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+              <div>
+                <label for="article-content" class="block text-sm font-medium text-gray-700">Matn</label>
+                <textarea id="article-content" rows="8" required class="bg-black block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"></textarea>
+              </div>
+              <div class="flex justify-end space-x-3">
+                <button type="button" id="cancel-article" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                  Bekor qilish
+                </button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-700">
+                  Saqlash
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Sarlavha</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Likelar</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Izohlar</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Sana</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-red-500 uppercase tracking-wider">Harakatlar</th>
+              </tr>
+            </thead>
+            <tbody id="articles-table" class="bg-black divide-y divide-gray-200">
+              <!-- Yangiliklar jadvali shu yerda yuklanadi -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Comments Section -->
+      <section id="comments" class="p-8 hidden">
+        <h2 class="text-2xl font-bold mb-6">Izohlar boshqaruvi</h2>
+        
+        <div class="bg-black rounded-lg shadow overflow-hidden">
+          <table class="divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Foydalanuvchi</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Izoh</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Yangilik</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sana</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harakatlar</th>
+              </tr>
+            </thead>
+            <tbody id="comments-table" class="bg-black divide-y divide-gray-200">
+              <!-- Izohlar jadvali shu yerda yuklanadi -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

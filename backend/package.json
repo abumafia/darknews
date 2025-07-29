@@ -1,0 +1,13 @@
+{
+  "name": "news-website-backend",
+  "version": "1.0.0",
+  "description": "Backend for news website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
