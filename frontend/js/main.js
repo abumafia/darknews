@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         <div class="bg-black glass-card rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
           <div class="bg-black p-6">
             <h2 class="text-green-500 text-xl font-bold mb-2">${article.title}</h2>
-            <p class="text-gray-300 mb-4 line-clamp-3">${article.content}</p>
+            <p class="text-gray-300 mb-4 line-clamp-3 whitespace-pre-line">${article.content}</p>
             
             <div class="flex items-center justify-between pt-3 border-t border-gray-700">
               <a href="news.html?id=${article.id}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
